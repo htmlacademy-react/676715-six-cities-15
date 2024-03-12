@@ -1,14 +1,63 @@
-// import Header from '../../components/layout/layout';
+import { Helmet } from 'react-helmet-async';
 import Review from '../../components/review/review';
-import Card from '../../components/card/card';
+// import OfferCard from '../../components/offer-card/offer-card';
+import { TPreviewOffer, TPreviewOffers, TDetailOffer, TDetailOffers } from '../../types/offer';
+import { useParams } from 'react-router-dom';
+import Page404 from '../page404/page404';
+import { capitalizeFirstLetter, getRatingPercentage } from '../../utils';
 
-export default function Offer(): JSX.Element {
+type OfferProps = {
+//   // offersCount: number;
+  offers: TPreviewOffers,
+  detailOffers: TDetailOffers
+//   // authorizationStatus: AuthorizationStatus
+};
+
+// export default function Offer({offers}: OfferProps): JSX.Element {
+//   const { id } = useParams();
+//   console.log('Card id', id);
+//   const activeOffer: TPreviewOffer | undefined = offers.find((offer: TPreviewOffer) => offer.id === id);
+//   console.log('activeOffer', activeOffer);
+//   // const activeOffer = offers.find((offer) => offer.id === id);
+
+//   if (!activeOffer) {
+//     return <Page404 />;
+//   }
+
+// export default function Offer(): JSX.Element {
+export default function Offer({offers, detailOffers}: OfferProps): JSX.Element {
+  const { id } = useParams();
+  const activeOffer:TDetailOffer | undefined = detailOffers.find((offer: TDetailOffer) => offer.id === id);
+  if (!activeOffer) {
+    return <Page404 />;
+  }
+
+  const {images, title, isPremium, isFavorite, rating, type, bedrooms, maxAdults, price, goods, host} = activeOffer;
+
+  const inFavoritesIcon = isFavorite ? 'offer__bookmark-button--active' : '';
+  const inFavoritesText = isFavorite ? 'In bookmarks' : 'To bookmarks';
+  const isHostProIcon = host.isPro ? 'offer__avatar-wrapper--pro' : '';
+  const isHostProText = host.isPro ? 'Pro' : '';
+
   return (
     <main className="page__main page__main--offer">
+      <Helmet>
+        <title>6 cities - Offer</title>
+      </Helmet>
       <section className="offer">
         <div className="offer__gallery-container container">
           <div className="offer__gallery">
-            <div className="offer__image-wrapper">
+            {
+              images.map((image, index) => {
+                return (
+                  <div className="offer__image-wrapper" key={index}>
+                    <img className="offer__image" src={image} alt={title}/>
+                  </div>
+                )
+              })
+            }
+
+            {/* <div className="offer__image-wrapper">
               <img className="offer__image" src="img/room.jpg" alt="Photo studio" />
             </div>
             <div className="offer__image-wrapper">
@@ -25,93 +74,70 @@ export default function Offer(): JSX.Element {
             </div>
             <div className="offer__image-wrapper">
               <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="offer__container container">
           <div className="offer__wrapper">
-            <div className="offer__mark">
-              <span>Premium</span>
-            </div>
+            {isPremium && <div className="offer__mark"><span>Premium</span></div>}
             <div className="offer__name-wrapper">
               <h1 className="offer__name">
-                Beautiful &amp; luxurious studio at great location
+                {title}
               </h1>
-              <button className="offer__bookmark-button button" type="button">
+              <button className={`offer__bookmark-button ${inFavoritesIcon} button`} type="button">
                 <svg className="offer__bookmark-icon" width="31" height="33">
                   <use xlinkHref="#icon-bookmark"></use>
                 </svg>
-                <span className="visually-hidden">To bookmarks</span>
+                <span className="visually-hidden">{inFavoritesText}</span>
               </button>
             </div>
             <div className="offer__rating rating">
               <div className="offer__stars rating__stars">
-                <span style={{width: '80%'}}></span>
+                <span style={{width: getRatingPercentage(rating)}}></span>
                 <span className="visually-hidden">Rating</span>
               </div>
-              <span className="offer__rating-value rating__value">4.8</span>
+              <span className="offer__rating-value rating__value">{rating}</span>
             </div>
             <ul className="offer__features">
               <li className="offer__feature offer__feature--entire">
-                Apartment
+              {capitalizeFirstLetter(type)}
               </li>
               <li className="offer__feature offer__feature--bedrooms">
-                3 Bedrooms
+                {bedrooms} Bedrooms
               </li>
               <li className="offer__feature offer__feature--adults">
-                Max 4 adults
+                Max {maxAdults} adults
               </li>
             </ul>
             <div className="offer__price">
-              <b className="offer__price-value">&euro;120</b>
+              <b className="offer__price-value">&euro;{price}</b>
               <span className="offer__price-text">&nbsp;night</span>
             </div>
             <div className="offer__inside">
               <h2 className="offer__inside-title">What&apos;s inside</h2>
               <ul className="offer__inside-list">
-                <li className="offer__inside-item">
-                  Wi-Fi
-                </li>
-                <li className="offer__inside-item">
-                  Washing machine
-                </li>
-                <li className="offer__inside-item">
-                  Towels
-                </li>
-                <li className="offer__inside-item">
-                  Heating
-                </li>
-                <li className="offer__inside-item">
-                  Coffee machine
-                </li>
-                <li className="offer__inside-item">
-                  Baby seat
-                </li>
-                <li className="offer__inside-item">
-                  Kitchen
-                </li>
-                <li className="offer__inside-item">
-                  Dishwasher
-                </li>
-                <li className="offer__inside-item">
-                  Cabel TV
-                </li>
-                <li className="offer__inside-item">
-                  Fridge
-                </li>
+                {
+                  goods.map((good, index) => {
+                    return (
+                      <li className="offer__inside-item" key={index}>
+                        {good}
+                      </li>
+                    )
+                  })
+                }
               </ul>
             </div>
             <div className="offer__host">
               <h2 className="offer__host-title">Meet the host</h2>
               <div className="offer__host-user user">
-                <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                  <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
+                <div className={`offer__avatar-wrapper ${isHostProIcon} user__avatar-wrapper`}>
+                  <img className="offer__avatar user__avatar" src={host.avatarUrl} width="74" height="74" alt="Host avatar" />
                 </div>
                 <span className="offer__user-name">
-                  Angelina
+                  {host.name}
                 </span>
                 <span className="offer__user-status">
-                  Pro
+                  {isHostProText}
                 </span>
               </div>
               <div className="offer__description">
@@ -184,9 +210,9 @@ export default function Offer(): JSX.Element {
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-            <Card />
-            <Card />
-            <Card />
+            {/* <OfferCard />
+            <OfferCard />
+            <OfferCard /> */}
           </div>
         </section>
       </div>
