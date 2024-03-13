@@ -9,16 +9,19 @@ import Login from '../../pages/login/login';
 import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
 import { TDetailOffers, TPreviewOffers } from '../../types/offer';
+// import { reviews } from '../../mocks/reviews';
+import { TReviews } from '../../types/review';
 
-type AppProps = {
+type TAppProps = {
   // offersCount: number;
   offers: TPreviewOffers
   detailOffers: TDetailOffers,
+  reviews: TReviews,
   authorizationStatus: AuthorizationStatus
 };
 
 // export default function App({offers, authorizationStatus}: AppProps): JSX.Element {
-export default function App({offers, detailOffers}: AppProps): JSX.Element {
+export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -45,10 +48,8 @@ export default function App({offers, detailOffers}: AppProps): JSX.Element {
               element={<Login />}
             />
             <Route
-              // path={`${AppRoute.Offer}/:id`}
               path={AppRoute.Offer}
-              element={<Offer offers = {offers} detailOffers = {detailOffers} />}
-              // element={<Offer />}
+              element={<Offer offers = {offers} detailOffers = {detailOffers} reviews = {reviews}/>}
             />
             <Route
               path="*"

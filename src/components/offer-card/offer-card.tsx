@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { capitalizeFirstLetter, getRatingPercentage } from '../../utils';
 
-type OfferCardProps = {
+type TOfferCardProps = {
   // раскомментировать позже
   // offer: TPreviewOffer;
   // handleHover: (offer?: TPreviewOffer) => void;
@@ -28,7 +28,7 @@ type OfferCardProps = {
 
   // const {id, title} = offer;
 
-export default function OfferCard({id, isPremium, title, previewImage, price, isFavorite, rating, type}: OfferCardProps): JSX.Element {
+export default function OfferCard({id, isPremium, title, previewImage, price, isFavorite, rating, type}: TOfferCardProps): JSX.Element {
   const inFavoritesIcon = isFavorite ? 'place-card__bookmark-button--active' : '';
   const inFavoritesText = isFavorite ? 'In bookmarks' : 'To bookmarks';
 

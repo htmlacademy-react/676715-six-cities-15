@@ -3,18 +3,18 @@ import OfferCard from '../offer-card/offer-card';
 import { TPreviewOffer, TPreviewOffers } from '../../types/offer';
 import { Nullable } from 'vitest';
 
-type OfferListProps = {
+type TOfferListProps = {
   offers: TPreviewOffers
 };
 
-export default function OffersList({offers}: OfferListProps): JSX.Element {
+export default function OffersList({offers}: TOfferListProps): JSX.Element {
   // раскомментировать позже
   // const [activeOffer, setActiveOffer] = useState<Nullable<TPreviewOffer>>(null);
   // const handleHover = (offer?: TPreviewOffer) => {
   //   setActiveOffer(offer || null);
   // };
   // console.log('OffersList-offers:', offers);
-  
+
   return (
     <div className="cities__places-container container">
       <section className="cities__places places">
@@ -41,7 +41,6 @@ export default function OffersList({offers}: OfferListProps): JSX.Element {
               <OfferCard
                 key={offer.id}
                 {...offer}
-                // offer={offer}
                 // handleHover={handleHover}
               />))
           }

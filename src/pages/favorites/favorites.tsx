@@ -4,12 +4,12 @@ import OfferCard from '../../components/offer-card/offer-card';
 import { TPreviewOffers } from '../../types/offer';
 import { TPreviewOffer } from '../../types/offer';
 
-type FavoritesProps = {
+type TFavoritesProps = {
   // offersCount: number;
   offers: TPreviewOffers
 };
 
-export default function Favorites({offers}: FavoritesProps): JSX.Element {
+export default function Favorites({offers}: TFavoritesProps): JSX.Element {
   // console.log('Offers', offers);
   let allOffersCities: string[] = [];
 

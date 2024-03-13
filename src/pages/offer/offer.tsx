@@ -1,15 +1,19 @@
 import { Helmet } from 'react-helmet-async';
-import Review from '../../components/review/review';
+import ReviewItem from '../../components/review-item/review-item';
 // import OfferCard from '../../components/offer-card/offer-card';
 import { TPreviewOffer, TPreviewOffers, TDetailOffer, TDetailOffers } from '../../types/offer';
 import { useParams } from 'react-router-dom';
 import Page404 from '../page404/page404';
 import { capitalizeFirstLetter, getRatingPercentage } from '../../utils';
+import ReviewForm from '../../components/review-form/review-form';
+import { TReviews } from '../../types/review';
+import ReviewsList from '../../components/reviews-list/reviews-list';
 
-type OfferProps = {
+type TOfferProps = {
 //   // offersCount: number;
   offers: TPreviewOffers,
   detailOffers: TDetailOffers
+  reviews: TReviews
 //   // authorizationStatus: AuthorizationStatus
 };
 
@@ -25,14 +29,14 @@ type OfferProps = {
 //   }
 
 // export default function Offer(): JSX.Element {
-export default function Offer({offers, detailOffers}: OfferProps): JSX.Element {
+export default function Offer({offers, detailOffers, reviews}: TOfferProps): JSX.Element {
   const { id } = useParams();
   const activeOffer:TDetailOffer | undefined = detailOffers.find((offer: TDetailOffer) => offer.id === id);
   if (!activeOffer) {
     return <Page404 />;
   }
 
-  const {images, title, isPremium, isFavorite, rating, type, bedrooms, maxAdults, price, goods, host} = activeOffer;
+  const {images, title, isPremium, isFavorite, rating, type, bedrooms, maxAdults, price, goods, host, description} = activeOffer;
 
   const inFavoritesIcon = isFavorite ? 'offer__bookmark-button--active' : '';
   const inFavoritesText = isFavorite ? 'In bookmarks' : 'To bookmarks';
@@ -142,65 +146,14 @@ export default function Offer({offers, detailOffers}: OfferProps): JSX.Element {
               </div>
               <div className="offer__description">
                 <p className="offer__text">
-                  A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                </p>
-                <p className="offer__text">
-                  An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                  {description}
                 </p>
               </div>
             </div>
             <section className="offer__reviews reviews">
-              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-              <ul className="reviews__list">
-                <Review />
-              </ul>
-              <form className="reviews__form form" action="#" method="post">
-                <label className="reviews__label form__label" htmlFor="review">Your review</label>
-                <div className="reviews__rating-form form__rating">
-                  <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
-                  <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
-                    <svg className="form__star-image" width="37" height="33">
-                      <use xlinkHref="#icon-star"></use>
-                    </svg>
-                  </label>
-
-                  <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" type="radio" />
-                  <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
-                    <svg className="form__star-image" width="37" height="33">
-                      <use xlinkHref="#icon-star"></use>
-                    </svg>
-                  </label>
-
-                  <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" type="radio" />
-                  <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
-                    <svg className="form__star-image" width="37" height="33">
-                      <use xlinkHref="#icon-star"></use>
-                    </svg>
-                  </label>
-
-                  <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" type="radio" />
-                  <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
-                    <svg className="form__star-image" width="37" height="33">
-                      <use xlinkHref="#icon-star"></use>
-                    </svg>
-                  </label>
-
-                  <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" type="radio" />
-                  <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
-                    <svg className="form__star-image" width="37" height="33">
-                      <use xlinkHref="#icon-star"></use>
-                    </svg>
-                  </label>
-                </div>
-                <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
-                <div className="reviews__button-wrapper">
-                  <p className="reviews__help">
-                    To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
-                  </p>
-                  <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
-                </div>
-                {/* </div> */}
-              </form>
+              <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">reviews.length</span></h2>
+              <ReviewsList reviews={reviews} />
+              <ReviewForm />
             </section>
           </div>
         </div>
