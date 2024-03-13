@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 // import ReviewItem from '../../components/review-item/review-item';
 // import OfferCard from '../../components/offer-card/offer-card';
 // import { TPreviewOffer, TPreviewOffers, TDetailOffer, TDetailOffers } from '../../types/offer';
-import { TPreviewOffers, TDetailOffer, TDetailOffers } from '../../types/offer';
+import { TDetailOffer, TDetailOffers } from '../../types/offer';
 import { useParams } from 'react-router-dom';
 import Page404 from '../page404/page404';
 import { capitalizeFirstLetter, getRatingPercentage } from '../../utils';
@@ -12,7 +12,7 @@ import ReviewsList from '../../components/reviews-list/reviews-list';
 
 type TOfferProps = {
 //   // offersCount: number;
-  offers: TPreviewOffers;
+  // offers: TPreviewOffers;
   detailOffers: TDetailOffers;
   reviews: TReviews;
 //   // authorizationStatus: AuthorizationStatus
@@ -29,8 +29,8 @@ type TOfferProps = {
 //     return <Page404 />;
 //   }
 
-// export default function Offer(): JSX.Element {
-export default function Offer({offers, detailOffers, reviews}: TOfferProps): JSX.Element {
+// export default function Offer({offers, detailOffers, reviews}: TOfferProps): JSX.Element {
+export default function Offer({detailOffers, reviews}: TOfferProps): JSX.Element {
   const { id } = useParams();
   const activeOffer:TDetailOffer | undefined = detailOffers.find((offer: TDetailOffer) => offer.id === id);
   if (!activeOffer) {
