@@ -1,10 +1,11 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import OfferCard from '../offer-card/offer-card';
-import { TPreviewOffer, TPreviewOffers } from '../../types/offer';
-import { Nullable } from 'vitest';
+// import { TPreviewOffer, TPreviewOffers } from '../../types/offer';
+import { TPreviewOffers } from '../../types/offer';
+// import { Nullable } from 'vitest';
 
 type TOfferListProps = {
-  offers: TPreviewOffers
+  offers: TPreviewOffers;
 };
 
 export default function OffersList({offers}: TOfferListProps): JSX.Element {

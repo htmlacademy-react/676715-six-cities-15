@@ -6,27 +6,27 @@ type TOfferCardProps = {
   // раскомментировать позже
   // offer: TPreviewOffer;
   // handleHover: (offer?: TPreviewOffer) => void;
-  id: string,
-  isPremium: boolean,
-  title: string,
-  previewImage: string,
-  price: number,
-  isFavorite: boolean,
-  rating: number,
-  type: string
+  id: string;
+  isPremium: boolean;
+  title: string;
+  previewImage: string;
+  price: number;
+  isFavorite: boolean;
+  rating: number;
+  type: string;
 };
 
 // раскомментировать позже
 // export default function OfferCard({offer, handleHover}: OfferCardProps): JSX.Element {
-  // const handleMouseOn = () => {
-  //   handleHover(offer);
-  // };
+// const handleMouseOn = () => {
+//   handleHover(offer);
+// };
 
-  // const handleMouseOff = () => {
-  //   handleHover();
-  // };
+// const handleMouseOff = () => {
+//   handleHover();
+// };
 
-  // const {id, title} = offer;
+// const {id, title} = offer;
 
 export default function OfferCard({id, isPremium, title, previewImage, price, isFavorite, rating, type}: TOfferCardProps): JSX.Element {
   const inFavoritesIcon = isFavorite ? 'place-card__bookmark-button--active' : '';
@@ -38,7 +38,7 @@ export default function OfferCard({id, isPremium, title, previewImage, price, is
         className="cities__card place-card"
         // onMouseEnter={handleMouseOn}
         // onMouseLeave={handleMouseOff}
-        >
+      >
 
         {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
 

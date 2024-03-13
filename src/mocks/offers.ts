@@ -169,9 +169,9 @@ export const detailOffers: TDetailOffers = [
       'Heating'
     ],
     'host': {
-    'name': 'Oliver Conner',
-    'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
-    'isPro': false
+      'name': 'Oliver Conner',
+      'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
+      'isPro': false
     },
     'images': [
       'https://15.design.htmlacademy.pro/static/hotel/7.jpg',
@@ -214,7 +214,7 @@ export const detailOffers: TDetailOffers = [
       'name': 'Oliver Conner2',
       'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/9.jpg',
       'isPro': true
-      },
+    },
     'images': [
       'https://15.design.htmlacademy.pro/static/hotel/9.jpg',
       'https://15.design.htmlacademy.pro/static/hotel/7.jpg',
@@ -250,9 +250,9 @@ export const detailOffers: TDetailOffers = [
       'Heating'
     ],
     'host': {
-    'name': '3Oliver Conner',
-    'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
-    'isPro': false
+      'name': '3Oliver Conner',
+      'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
+      'isPro': false
     },
     'images': [
       'https://15.design.htmlacademy.pro/static/hotel/6.jpg',
@@ -289,9 +289,9 @@ export const detailOffers: TDetailOffers = [
       'Heating'
     ],
     'host': {
-    'name': '4Oliver Conner',
-    'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
-    'isPro': true
+      'name': '4Oliver Conner',
+      'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
+      'isPro': true
     },
     'images': [
       'https://15.design.htmlacademy.pro/static/hotel/18.jpg',
@@ -328,9 +328,9 @@ export const detailOffers: TDetailOffers = [
       'Heating'
     ],
     'host': {
-    'name': 'Oliver Conner',
-    'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
-    'isPro': false
+      'name': 'Oliver Conner',
+      'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/14.jpg',
+      'isPro': false
     },
     'images': [
       'https://15.design.htmlacademy.pro/static/hotel/7.jpg',
@@ -367,9 +367,9 @@ export const detailOffers: TDetailOffers = [
       'Heating'
     ],
     'host': {
-    'name': '5Oliver Conner',
-    'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/4.jpg',
-    'isPro': true
+      'name': '5Oliver Conner',
+      'avatarUrl': 'https://15.design.htmlacademy.pro/static/hotel/4.jpg',
+      'isPro': true
     },
     'images': [
       'https://15.design.htmlacademy.pro/static/hotel/9.jpg',

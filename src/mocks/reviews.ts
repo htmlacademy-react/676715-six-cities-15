@@ -8,10 +8,10 @@ export const reviews: TReviews = [
       'name': 'Oliver Conner',
       'avatarUrl': 'https://15.design.htmlacademy.pro/static/avatar/5.jpg',
       'isPro': true
-      },
+    },
     'comment': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
     'rating': 4
-    },
+  },
   {
     'id': '3b4c32ff-0be1-4edf-9cfb-e1a90a30c8a3',
     'date': '2022-02-10T21:00:00.030Z',
@@ -33,6 +33,5 @@ export const reviews: TReviews = [
     },
     'comment': 'The room was spacious and clean. The pool looked nothing like the photos and desparately needs a clean. The sauna and spa were closed for lunar new year holiday.',
     'rating': 1.5
-
   }
 ];

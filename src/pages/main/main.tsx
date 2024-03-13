@@ -4,7 +4,7 @@ import { TPreviewOffers } from '../../types/offer';
 
 type MainProps = {
   // offersCount: number;
-  offers: TPreviewOffers
+  offers: TPreviewOffers;
 };
 
 // export default function Main({offersCount}: MainProps): JSX.Element {

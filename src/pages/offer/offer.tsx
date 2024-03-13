@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
-import ReviewItem from '../../components/review-item/review-item';
+// import ReviewItem from '../../components/review-item/review-item';
 // import OfferCard from '../../components/offer-card/offer-card';
-import { TPreviewOffer, TPreviewOffers, TDetailOffer, TDetailOffers } from '../../types/offer';
+// import { TPreviewOffer, TPreviewOffers, TDetailOffer, TDetailOffers } from '../../types/offer';
+import { TPreviewOffers, TDetailOffer, TDetailOffers } from '../../types/offer';
 import { useParams } from 'react-router-dom';
 import Page404 from '../page404/page404';
 import { capitalizeFirstLetter, getRatingPercentage } from '../../utils';
@@ -11,9 +12,9 @@ import ReviewsList from '../../components/reviews-list/reviews-list';
 
 type TOfferProps = {
 //   // offersCount: number;
-  offers: TPreviewOffers,
-  detailOffers: TDetailOffers
-  reviews: TReviews
+  offers: TPreviewOffers;
+  detailOffers: TDetailOffers;
+  reviews: TReviews;
 //   // authorizationStatus: AuthorizationStatus
 };
 
@@ -52,33 +53,19 @@ export default function Offer({offers, detailOffers, reviews}: TOfferProps): JSX
         <div className="offer__gallery-container container">
           <div className="offer__gallery">
             {
-              images.map((image, index) => {
-                return (
-                  <div className="offer__image-wrapper" key={index}>
-                    <img className="offer__image" src={image} alt={title}/>
-                  </div>
-                )
-              })
+              // images.map((image, index) => {
+              //   return (
+              //     <div className="offer__image-wrapper" key={index}>
+              //       <img className="offer__image" src={image} alt={title}/>
+              //     </div>
+              //   )
+              // })
+              images.map((image) => (
+                <div className="offer__image-wrapper" key={crypto.randomUUID()}>
+                  <img className="offer__image" src={image} alt={title}/>
+                </div>
+              ))
             }
-
-            {/* <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/room.jpg" alt="Photo studio" />
-            </div>
-            <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
-            </div>
-            <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/apartment-02.jpg" alt="Photo studio" />
-            </div>
-            <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/apartment-03.jpg" alt="Photo studio" />
-            </div>
-            <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/studio-01.jpg" alt="Photo studio" />
-            </div>
-            <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
-            </div> */}
           </div>
         </div>
         <div className="offer__container container">
@@ -104,7 +91,7 @@ export default function Offer({offers, detailOffers, reviews}: TOfferProps): JSX
             </div>
             <ul className="offer__features">
               <li className="offer__feature offer__feature--entire">
-              {capitalizeFirstLetter(type)}
+                {capitalizeFirstLetter(type)}
               </li>
               <li className="offer__feature offer__feature--bedrooms">
                 {bedrooms} Bedrooms
@@ -121,13 +108,11 @@ export default function Offer({offers, detailOffers, reviews}: TOfferProps): JSX
               <h2 className="offer__inside-title">What&apos;s inside</h2>
               <ul className="offer__inside-list">
                 {
-                  goods.map((good, index) => {
-                    return (
-                      <li className="offer__inside-item" key={index}>
-                        {good}
-                      </li>
-                    )
-                  })
+                  goods.map((good) => (
+                    <li className="offer__inside-item" key={crypto.randomUUID()}>
+                      {good}
+                    </li>
+                  ))
                 }
               </ul>
             </div>

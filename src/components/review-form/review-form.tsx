@@ -1,4 +1,4 @@
-import { Fragment, ReactEventHandler, useState } from "react";
+import { Fragment, ReactEventHandler, useState } from 'react';
 
 type TChangeHandler = ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -36,10 +36,11 @@ export default function ReviewForm(): JSX.Element {
               <label
                 htmlFor={`${value}-stars`}
                 className="reviews__rating-label form__rating-label"
-                title={label}>
-                  <svg className="form__star-image" width="37" height="33">
-                    <use xlinkHref="#icon-star"></use>
-                  </svg>
+                title={label}
+              >
+                <svg className="form__star-image" width="37" height="33">
+                  <use xlinkHref="#icon-star"></use>
+                </svg>
               </label>
             </Fragment>
           ))

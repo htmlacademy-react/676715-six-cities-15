@@ -1,12 +1,12 @@
-import { TReview } from "../../types/review";
-import { getRatingPercentage, formatStringToDateTime, formatStringToMonthYear } from "../../utils";
+import { TReview } from '../../types/review';
+import { getRatingPercentage, formatStringToDateTime, formatStringToMonthYear } from '../../utils';
 
 type TReviewItemProps = {
-  review: TReview
+  review: TReview;
 };
 
 export default function ReviewItem({review}: TReviewItemProps): JSX.Element {
-const {date, user, comment, rating} = review;
+  const {date, user, comment, rating} = review;
 
   return (
     <li className="reviews__item">

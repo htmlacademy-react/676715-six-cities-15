@@ -14,10 +14,10 @@ import { TReviews } from '../../types/review';
 
 type TAppProps = {
   // offersCount: number;
-  offers: TPreviewOffers
-  detailOffers: TDetailOffers,
-  reviews: TReviews,
-  authorizationStatus: AuthorizationStatus
+  offers: TPreviewOffers;
+  detailOffers: TDetailOffers;
+  reviews: TReviews;
+  // authorizationStatus: AuthorizationStatus;
 };
 
 // export default function App({offers, authorizationStatus}: AppProps): JSX.Element {
