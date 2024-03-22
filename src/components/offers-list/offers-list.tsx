@@ -1,8 +1,9 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import OfferCard from '../offer-card/offer-card';
-// import { TPreviewOffer, TPreviewOffers } from '../../types/offer';
-import { TPreviewOffers } from '../../types/offer';
-// import { Nullable } from 'vitest';
+import { TPreviewOffer, TPreviewOffers } from '../../types/offer';
+// import { TPreviewOffers } from '../../types/offer';
+import { Nullable } from 'vitest';
+import Map from '../map/map';
 
 type TOfferListProps = {
   offers: TPreviewOffers;
@@ -10,10 +11,10 @@ type TOfferListProps = {
 
 export default function OffersList({offers}: TOfferListProps): JSX.Element {
   // раскомментировать позже
-  // const [activeOffer, setActiveOffer] = useState<Nullable<TPreviewOffer>>(null);
-  // const handleHover = (offer?: TPreviewOffer) => {
-  //   setActiveOffer(offer || null);
-  // };
+  const [activeOffer, setActiveOffer] = useState<Nullable<TPreviewOffer>>(null);
+  const handleHover = (offer?: TPreviewOffer) => {
+    setActiveOffer(offer || null);
+  };
   // console.log('OffersList-offers:', offers);
 
   return (
@@ -38,17 +39,20 @@ export default function OffersList({offers}: TOfferListProps): JSX.Element {
         </form>
         <div className="cities__places-list places__list tabs__content">
           {
-            offers.map((offer) => (
+            offers.map((offer: TPreviewOffer) => (
               <OfferCard
                 key={offer.id}
-                {...offer}
-                // handleHover={handleHover}
+                // {...offer}
+                offer={offer}
+                handleHover={handleHover}
               />))
           }
         </div>
       </section>
       <div className="cities__right-section">
-        <section className="cities__map map"></section>
+        {/* <section className="cities__map map"></section> */}
+        {/* <Map className='cities__map' city={currentLocation} offers={offers} activeOfferId={activeOffer?.id}/> */}
+        <Map city={offers[0].city} offers={offers} activeOfferId={activeOffer?.id}/>
       </div>
     </div>
   );

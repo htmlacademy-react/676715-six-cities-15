@@ -8,7 +8,7 @@ import Favorites from '../../pages/favorites/favorites';
 import Login from '../../pages/login/login';
 import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
-import { TDetailOffers, TPreviewOffers } from '../../types/offer';
+import { TPreviewOffers, TDetailOffers } from '../../types/offer';
 // import { reviews } from '../../mocks/reviews';
 import { TReviews } from '../../types/review';
 

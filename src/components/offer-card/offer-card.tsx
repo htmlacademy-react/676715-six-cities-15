@@ -1,34 +1,35 @@
-// import { TPreviewOffer } from '../../types/offer';
+import { TPreviewOffer } from '../../types/offer';
 import { Link } from 'react-router-dom';
 import { capitalizeFirstLetter, getRatingPercentage } from '../../utils';
 
 type TOfferCardProps = {
   // раскомментировать позже
-  // offer: TPreviewOffer;
-  // handleHover: (offer?: TPreviewOffer) => void;
-  id: string;
-  isPremium: boolean;
-  title: string;
-  previewImage: string;
-  price: number;
-  isFavorite: boolean;
-  rating: number;
-  type: string;
+  offer: TPreviewOffer;
+  handleHover: (offer?: TPreviewOffer) => void;
+  // id: string;
+  // isPremium: boolean;
+  // title: string;
+  // previewImage: string;
+  // price: number;
+  // isFavorite: boolean;
+  // rating: number;
+  // type: string;
 };
 
 // раскомментировать позже
-// export default function OfferCard({offer, handleHover}: OfferCardProps): JSX.Element {
-// const handleMouseOn = () => {
-//   handleHover(offer);
-// };
+export default function OfferCard({offer, handleHover}: TOfferCardProps): JSX.Element {
+  const handleMouseOn = () => {
+    handleHover(offer);
+  };
 
-// const handleMouseOff = () => {
-//   handleHover();
-// };
+  const handleMouseOff = () => {
+    handleHover();
+  };
 
-// const {id, title} = offer;
+// вариант 1 - чистые свойства, без offer
+// export default function OfferCard({id, isPremium, title, previewImage, price, isFavorite, rating, type}: TOfferCardProps): JSX.Element {
 
-export default function OfferCard({id, isPremium, title, previewImage, price, isFavorite, rating, type}: TOfferCardProps): JSX.Element {
+  const {id, isPremium, title, previewImage, price, isFavorite, rating, type} = offer;
   const inFavoritesIcon = isFavorite ? 'place-card__bookmark-button--active' : '';
   const inFavoritesText = isFavorite ? 'In bookmarks' : 'To bookmarks';
 
@@ -36,8 +37,8 @@ export default function OfferCard({id, isPremium, title, previewImage, price, is
     <Link to={`/offer/${id}`}>
       <article
         className="cities__card place-card"
-        // onMouseEnter={handleMouseOn}
-        // onMouseLeave={handleMouseOff}
+        onMouseEnter={handleMouseOn}
+        onMouseLeave={handleMouseOff}
       >
 
         {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
