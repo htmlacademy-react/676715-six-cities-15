@@ -26,8 +26,8 @@ export default function OfferCard({offer, handleHover}: TOfferCardProps): JSX.El
     handleHover();
   };
 
-// вариант 1 - чистые свойства, без offer
-// export default function OfferCard({id, isPremium, title, previewImage, price, isFavorite, rating, type}: TOfferCardProps): JSX.Element {
+  // вариант 1 - чистые свойства, без offer
+  // export default function OfferCard({id, isPremium, title, previewImage, price, isFavorite, rating, type}: TOfferCardProps): JSX.Element {
 
   const {id, isPremium, title, previewImage, price, isFavorite, rating, type} = offer;
   const inFavoritesIcon = isFavorite ? 'place-card__bookmark-button--active' : '';

@@ -4,7 +4,7 @@ import useMap from '../../hooks/use-map';
 // import us
 // import {City, Points, Point} from '../../types/types';
 // import { TOfferCity, TPreviewOffer, TPreviewOffers } from '../../types/offer';
-import { TOfferCity, TPreviewOffer, TPreviewOffers } from '../../types/offer';
+import { TOfferCity, TPreviewOffers } from '../../types/offer';
 // import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 import 'leaflet/dist/leaflet.css';
 
