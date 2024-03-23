@@ -15,6 +15,7 @@ import 'leaflet/dist/leaflet.css';
 // };
 
 type MapProps = {
+  className?: string;
   city: TOfferCity;
   // points: TPreviewOffers;
   // selectedPoint: TPreviewOffer | undefined;
@@ -47,7 +48,7 @@ const currentCustomIcon = new Icon({
 });
 
 export default function Map(props: MapProps): JSX.Element {
-  const {city, offers, activeOfferId} = props;
+  const {className, city, offers, activeOfferId} = props;
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -78,7 +79,7 @@ export default function Map(props: MapProps): JSX.Element {
   }, [map, offers, activeOfferId]);
 
   // return <div style={{height: '500px'}} ref={mapRef}></div>;
-  return <section className="cities__map map" ref={mapRef} />;
+  return <section className={`map ${className}`} ref={mapRef} />;
 }
 
 // export default Map;

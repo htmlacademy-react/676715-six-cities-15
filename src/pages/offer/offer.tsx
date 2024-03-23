@@ -1,18 +1,20 @@
 import { Helmet } from 'react-helmet-async';
 // import ReviewItem from '../../components/review-item/review-item';
-// import OfferCard from '../../components/offer-card/offer-card';
+import OfferCard from '../../components/offer-card/offer-card';
 // import { TPreviewOffer, TPreviewOffers, TDetailOffer, TDetailOffers } from '../../types/offer';
-import { TDetailOffer, TDetailOffers } from '../../types/offer';
+import { TPreviewOffer, TPreviewOffers, TDetailOffer, TDetailOffers } from '../../types/offer';
 import { useParams } from 'react-router-dom';
 import Page404 from '../page404/page404';
 import { capitalizeFirstLetter, getRatingPercentage } from '../../utils';
 import ReviewForm from '../../components/review-form/review-form';
 import { TReviews } from '../../types/review';
 import ReviewsList from '../../components/reviews-list/reviews-list';
+import { nearOffers } from '../../mocks/offers';
+import Map from '../../components/map/map';
 
 type TOfferProps = {
 //   // offersCount: number;
-  // offers: TPreviewOffers;
+  offers: TPreviewOffers;
   detailOffers: TDetailOffers;
   reviews: TReviews;
 //   // authorizationStatus: AuthorizationStatus
@@ -29,15 +31,28 @@ type TOfferProps = {
 //     return <Page404 />;
 //   }
 
-// export default function Offer({offers, detailOffers, reviews}: TOfferProps): JSX.Element {
-export default function Offer({detailOffers, reviews}: TOfferProps): JSX.Element {
+export default function Offer({offers, detailOffers, reviews}: TOfferProps): JSX.Element {
+// export default function Offer({detailOffers, reviews}: TOfferProps): JSX.Element {
   const { id } = useParams();
   const activeOffer:TDetailOffer | undefined = detailOffers.find((offer: TDetailOffer) => offer.id === id);
   if (!activeOffer) {
     return <Page404 />;
   }
 
-  const {images, title, isPremium, isFavorite, rating, type, bedrooms, maxAdults, price, goods, host, description} = activeOffer;
+  const previewActiveOffer = offers.find((offer: TPreviewOffer) => offer.id === activeOffer.id);
+  // console.log('previewActiveOffer: ', previewActiveOffer);
+
+  let mapOffers:TPreviewOffers = [];
+
+  if (previewActiveOffer) {
+    mapOffers = [...nearOffers, previewActiveOffer];
+  } else {
+    mapOffers = [...nearOffers];
+  }
+
+  // console.log('mapOffers: ', mapOffers);
+
+  const {images, title, isPremium, isFavorite, rating, type, bedrooms, maxAdults, price, goods, host, description, city} = activeOffer;
 
   const inFavoritesIcon = isFavorite ? 'offer__bookmark-button--active' : '';
   const inFavoritesText = isFavorite ? 'In bookmarks' : 'To bookmarks';
@@ -142,15 +157,26 @@ export default function Offer({detailOffers, reviews}: TOfferProps): JSX.Element
             </section>
           </div>
         </div>
-        <section className="offer__map map"></section>
+        {/* <section className="offer__map map"></section> */}
+        <Map
+          className='offer__map'
+          city={city}
+          offers={mapOffers}
+          activeOfferId={activeOffer.id}
+        />
       </section>
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-            {/* <OfferCard />
-            <OfferCard />
-            <OfferCard /> */}
+            {
+              nearOffers.map((nearOffer: TPreviewOffer) => (
+                <OfferCard
+                  key={nearOffer.id}
+                  offer={nearOffer}
+                />
+              ))
+            }
           </div>
         </section>
       </div>

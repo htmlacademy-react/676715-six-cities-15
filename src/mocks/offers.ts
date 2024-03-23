@@ -380,3 +380,75 @@ export const detailOffers: TDetailOffers = [
     'maxAdults': 4
   }
 ];
+
+export const nearOffers: TPreviewOffers = [
+  {
+    'id': 'f523f3e1-df8c-49b2-9f8a-0fd2b8d4cb6e',
+    'title': 'Tile House',
+    'type': 'apartment',
+    'price': 498,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/1.jpg',
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.868610000000004,
+      'longitude': 2.342499,
+      'zoom': 16
+    },
+    'isFavorite': false,
+    'isPremium': true,
+    'rating': 3.4
+  },
+  {
+    'id': '10f6512f-dd63-494a-85eb-a27ad26abec8',
+    'title': 'Canal View Prinsengracht',
+    'type': 'room',
+    'price': 146,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/10.jpg',
+    'city': {
+      'name': 'Amsterdam',
+      'location': {
+        'latitude': 52.37454,
+        'longitude': 4.897976,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 52.36554,
+      'longitude': 4.911976,
+      'zoom': 16
+    },
+    'isFavorite': true,
+    'isPremium': false,
+    'rating': 1.8
+  },
+  {
+    'id': 'd99592e1-1524-4067-9517-4ee3a4b25188',
+    'title': 'Beautiful & luxurious apartment at great location',
+    'type': 'hotel',
+    'price': 260,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/15.jpg',
+    'city': {
+      'name': 'Cologne',
+      'location': {
+        'latitude': 50.938361,
+        'longitude': 6.959974,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 50.932361,
+      'longitude': 6.937974,
+      'zoom': 16
+    },
+    'isFavorite': false,
+    'isPremium': false,
+    'rating': 5
+  }
+];

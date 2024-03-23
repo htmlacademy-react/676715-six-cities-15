@@ -45,14 +45,20 @@ export default function OffersList({offers}: TOfferListProps): JSX.Element {
                 // {...offer}
                 offer={offer}
                 handleHover={handleHover}
-              />))
+              />
+            ))
           }
         </div>
       </section>
       <div className="cities__right-section">
         {/* <section className="cities__map map"></section> */}
         {/* <Map className='cities__map' city={currentLocation} offers={offers} activeOfferId={activeOffer?.id}/> */}
-        <Map city={offers[0].city} offers={offers} activeOfferId={activeOffer?.id}/>
+        <Map
+          className='cities__map'
+          city={offers[0].city}
+          offers={offers}
+          activeOfferId={activeOffer?.id}
+        />
       </div>
     </div>
   );

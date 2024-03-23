@@ -17,7 +17,6 @@ type TOfferCardProps = {
 };
 
 export default function OfferCard({offer, handleHover}: TOfferCardProps): JSX.Element {
-
   const handleMouseOn = () => {
     if (handleHover) {
       handleHover(offer);
