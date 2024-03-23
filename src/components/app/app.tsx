@@ -49,8 +49,8 @@ export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Ele
             />
             <Route
               path={AppRoute.Offer}
-              // element={<Offer offers = {offers} detailOffers = {detailOffers} reviews = {reviews}/>}
-              element={<Offer detailOffers = {detailOffers} reviews = {reviews}/>}
+              element={<Offer offers = {offers} detailOffers = {detailOffers} reviews = {reviews}/>}
+              // element={<Offer detailOffers = {detailOffers} reviews = {reviews}/>}
             />
             <Route
               path="*"
