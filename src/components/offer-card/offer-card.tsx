@@ -5,7 +5,7 @@ import { capitalizeFirstLetter, getRatingPercentage } from '../../utils';
 type TOfferCardProps = {
   // раскомментировать позже
   offer: TPreviewOffer;
-  handleHover: (offer?: TPreviewOffer) => void;
+  handleHover?: (offer?: TPreviewOffer) => void;
   // id: string;
   // isPremium: boolean;
   // title: string;
@@ -16,14 +16,18 @@ type TOfferCardProps = {
   // type: string;
 };
 
-// раскомментировать позже
 export default function OfferCard({offer, handleHover}: TOfferCardProps): JSX.Element {
+
   const handleMouseOn = () => {
-    handleHover(offer);
+    if (handleHover) {
+      handleHover(offer);
+    }
   };
 
   const handleMouseOff = () => {
-    handleHover();
+    if (handleHover) {
+      handleHover();
+    }
   };
 
   // вариант 1 - чистые свойства, без offer
