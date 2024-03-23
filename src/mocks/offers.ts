@@ -56,14 +56,14 @@ export const previewOffers: TPreviewOffers = [
     'city': {
       'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.37454,
+        'longitude': 4.897976,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.834610000000005,
-      'longitude': 2.335499,
+      'latitude': 52.36554,
+      'longitude': 4.911976,
       'zoom': 16
     },
     'isFavorite': true,
@@ -231,14 +231,14 @@ export const detailOffers: TDetailOffers = [
     'city': {
       'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.37454,
+        'longitude': 4.897976,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.834610000000005,
-      'longitude': 2.335499,
+      'latitude': 52.36554,
+      'longitude': 4.911976,
       'zoom': 16
     },
     'isFavorite': true,

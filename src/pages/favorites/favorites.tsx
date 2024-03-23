@@ -47,8 +47,8 @@ export default function Favorites({offers}: TFavoritesProps): JSX.Element {
                           return (
                             <OfferCard
                               key={offer.id}
-                              {...offer}
-                              // offer={offer}
+                              // {...offer}
+                              offer={offer}
                               // handleHover={handleHover}
                             />
                           );

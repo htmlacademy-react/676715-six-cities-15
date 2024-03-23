@@ -1,3 +1,8 @@
+export type TOfferCity = {
+  name: string;
+  location: TOfferLocation;
+}
+
 export type TOfferLocation = {
   latitude: number;
   longitude: number;
@@ -17,10 +22,7 @@ export type TPreviewOffer =
   type: string;
   price: number;
   previewImage: string;
-  city: {
-    name: string;
-    location: TOfferLocation;
-  };
+  city: TOfferCity;
   location: TOfferLocation;
   isFavorite: boolean;
   isPremium: boolean;
