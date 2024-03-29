@@ -33,7 +33,7 @@ export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Ele
           >
             <Route
               index
-              element={<Main offers = {offers} />}
+              element={<Main />}
             />
             <Route
               path={AppRoute.Favorites}
