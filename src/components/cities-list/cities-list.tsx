@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 import { CITIES } from '../../const';
 import { previewOffers } from '../../mocks/offers';
-import classNames from 'classnames';
 import { changeCurrentCity, loadOffers } from '../../store/actions';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 

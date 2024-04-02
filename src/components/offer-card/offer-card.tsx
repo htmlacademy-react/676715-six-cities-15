@@ -1,6 +1,6 @@
 import { TPreviewOffer } from '../../types/offer';
 import { Link } from 'react-router-dom';
-import { capitalizeFirstLetter, getRatingPercentage } from '../../utils';
+import { capitalizeFirstLetter, getRatingPercentage } from '../../utils/offer';
 
 type TOfferCardProps = {
   // раскомментировать позже

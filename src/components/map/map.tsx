@@ -64,8 +64,8 @@ export default function Map(props: MapProps): JSX.Element {
             lng: offer.location.longitude
           }
         )
-        .setIcon(offer.id === activeOfferId ? currentCustomIcon : defaultCustomIcon)
-        .addTo(markerLayer.current);
+          .setIcon(offer.id === activeOfferId ? currentCustomIcon : defaultCustomIcon)
+          .addTo(markerLayer.current);
       });
     }
   });

@@ -29,7 +29,7 @@ export default function Main(): JSX.Element {
         </section>
       </div>
       <div className="cities">
-        {(offers.length === 0) ? <NoOffersList city={currentCity}/> : <OffersList offers = {offers}/>}
+        {(offers.length === 0) ? <NoOffersList city={currentCity}/> : <OffersList offers = {offers} city={currentCity}/>}
       </div>
     </main>
   );

@@ -11,17 +11,19 @@ import Page404 from '../../pages/page404/page404';
 import { TPreviewOffers, TDetailOffers } from '../../types/offer';
 // import { reviews } from '../../mocks/reviews';
 import { TReviews } from '../../types/review';
+// import { useAppSelector } from '../../hooks';
 
 type TAppProps = {
-  // offersCount: number;
+//   // offersCount: number;
   offers: TPreviewOffers;
   detailOffers: TDetailOffers;
   reviews: TReviews;
-  // authorizationStatus: AuthorizationStatus;
+//   // authorizationStatus: AuthorizationStatus;
 };
 
 // export default function App({offers, authorizationStatus}: AppProps): JSX.Element {
 export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Element {
+// export default function App({offers}: TAppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -39,7 +41,8 @@ export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Ele
               path={AppRoute.Favorites}
               element={
                 <PrivateRoute authorizationStatus = {AuthorizationStatus.Auth}>
-                  <Favorites offers = {offers} />
+                  {/* <Favorites offers = {offers} /> */}
+                  <Favorites />
                 </PrivateRoute>
               }
             />

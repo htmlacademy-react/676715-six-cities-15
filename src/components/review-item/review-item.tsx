@@ -1,5 +1,5 @@
 import { TReview } from '../../types/review';
-import { getRatingPercentage, formatStringToDateTime, formatStringToMonthYear } from '../../utils';
+import { getRatingPercentage, formatStringToDateTime, formatStringToMonthYear } from '../../utils/offer';
 
 type TReviewItemProps = {
   review: TReview;

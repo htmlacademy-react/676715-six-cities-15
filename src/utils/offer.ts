@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { TPreviewOffer } from '../types/offer';
 // import { TPreviewOffer } from './types/offer';
 // import { previewOffers } from './mocks/offers';
 
@@ -20,6 +21,18 @@ function formatStringToMonthYear(date:string): string {
   return dayjs(date).format('MMMM YYYY');
 }
 
+function sortPriceDown(offerA: TPreviewOffer, offerB: TPreviewOffer): number {
+  return offerB.price - offerA.price;
+}
+
+function sortPriceUp(offerA: TPreviewOffer, offerB: TPreviewOffer): number {
+  return offerA.price - offerB.price;
+}
+
+function sortOfferRating(offerA: TPreviewOffer, offerB: TPreviewOffer) {
+  return offerB.rating - offerA.rating;
+}
+
 // function getNearOffers(offer: TPreviewOffer): TPreviewOffer[] {
 //   const nearOffers: TPreviewOffer[] = [];
 
@@ -37,4 +50,4 @@ function formatStringToMonthYear(date:string): string {
 // }
 
 // export {capitalizeFirstLetter, getRatingPercentage, formatStringToDateTime, formatStringToMonthYear, getNearOffers};
-export {capitalizeFirstLetter, getRatingPercentage, formatStringToDateTime, formatStringToMonthYear};
+export {capitalizeFirstLetter, getRatingPercentage, formatStringToDateTime, formatStringToMonthYear, sortPriceDown, sortPriceUp, sortOfferRating};
