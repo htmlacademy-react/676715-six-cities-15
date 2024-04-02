@@ -18,6 +18,8 @@ root.render(
     {/* <App offers = {previewOffers} detailOffers = {detailOffers} reviews = {reviews} authorizationStatus={authorizationStatus}/> */}
     <Provider store = {store}>
       <App offers = {previewOffers} detailOffers = {detailOffers} reviews = {reviews} />
+      {/* <App offers = {previewOffers}/> */}
+      {/* <App /> */}
     </Provider>
   </React.StrictMode>
 );

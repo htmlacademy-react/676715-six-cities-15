@@ -3,12 +3,16 @@ import OfferCard from '../../components/offer-card/offer-card';
 // import Header from '../../components/layout/layout';
 import { TPreviewOffers } from '../../types/offer';
 import { TPreviewOffer } from '../../types/offer';
+import { useAppSelector } from '../../hooks';
 
-type TFavoritesProps = {
-  offers: TPreviewOffers;
-};
+// type TFavoritesProps = {
+//   offers: TPreviewOffers;
+// };
 
-export default function Favorites({offers}: TFavoritesProps): JSX.Element {
+// export default function Favorites({offers}: TFavoritesProps): JSX.Element {
+export default function Favorites(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
+
   // console.log('Offers', offers);
   const allOffersCities: string[] = [];
 
