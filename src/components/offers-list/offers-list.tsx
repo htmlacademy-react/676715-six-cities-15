@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import OfferCard from '../offer-card/offer-card';
-import { TPreviewOffer, TPreviewOffers } from '../../types/offer';
-// import { TPreviewOffers } from '../../types/offer';
+// import { TPreviewOffer, TPreviewOffers } from '../../types/offer';
+import { TPreviewOffer } from '../../types/offer';
 import { Nullable } from 'vitest';
 import Map from '../map/map';
 import SortingForm from '../sorting-form/sorting-form';
@@ -9,13 +9,13 @@ import { sortOffers } from '../../utils/sort';
 // import { useAppSelector, useAppDispatch } from '../../hooks';
 import { useAppSelector } from '../../hooks';
 
-type TOfferListProps = {
-  offers: TPreviewOffers;
-  city: string;
-};
+// type TOfferListProps = {
+//   offers: TPreviewOffers;
+//   city: string;
+// };
 
-// export default function OffersList({offers}: TOfferListProps): JSX.Element {
-export default function OffersList({offers, city}: TOfferListProps): JSX.Element {
+export default function OffersList(): JSX.Element {
+// export default function OffersList({offers, city}: TOfferListProps): JSX.Element {
 
   const [activeOffer, setActiveOffer] = useState<Nullable<TPreviewOffer>>(null);
 
@@ -24,15 +24,17 @@ export default function OffersList({offers, city}: TOfferListProps): JSX.Element
   };
   // console.log('OffersList-offers:', offers);
 
+  const currentCity = useAppSelector((state) => state.currentCity);
+  const offers = useAppSelector((state) => state.offers);
   const currentSortType = useAppSelector((state) => state.currentSortType);
-  const sortedforListOffers = sortOffers[currentSortType]([...offers]);
+  const sortedForListOffers = sortOffers[currentSortType]([...offers]);
 
   return (
     <div className="cities__places-container container">
       <section className="cities__places places">
         <h2 className="visually-hidden">Places</h2>
         <b className="places__found">
-          {offers.length} place{offers.length > 1 && 's'} to stay in {city}
+          {offers.length} place{offers.length > 1 && 's'} to stay in {currentCity}
         </b>
 
         <SortingForm />
@@ -40,7 +42,7 @@ export default function OffersList({offers, city}: TOfferListProps): JSX.Element
         <div className="cities__places-list places__list tabs__content">
           {
             // offers.map((offer: TPreviewOffer) => (
-            sortedforListOffers.map((offer: TPreviewOffer) => (
+            sortedForListOffers.map((offer: TPreviewOffer) => (
               <OfferCard
                 key={offer.id}
                 // {...offer}

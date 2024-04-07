@@ -6,7 +6,11 @@ import { previewOffers, detailOffers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import ErrorMessage from './components/error-message/error-message';
+import { checkAuthAction, fetchOfferAction } from './store/api-actions';
 
+store.dispatch(fetchOfferAction());
+store.dispatch(checkAuthAction());
 // const authorizationStatus = AuthorizationStatus.Auth;
 
 const root = ReactDOM.createRoot(
@@ -17,6 +21,7 @@ root.render(
   <React.StrictMode>
     {/* <App offers = {previewOffers} detailOffers = {detailOffers} reviews = {reviews} authorizationStatus={authorizationStatus}/> */}
     <Provider store = {store}>
+      <ErrorMessage />
       <App offers = {previewOffers} detailOffers = {detailOffers} reviews = {reviews} />
       {/* <App offers = {previewOffers}/> */}
       {/* <App /> */}

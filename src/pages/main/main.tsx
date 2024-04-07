@@ -14,7 +14,7 @@ import { useAppSelector } from '../../hooks';
 // export default function Main({offersCount}: MainProps): JSX.Element {
 export default function Main(): JSX.Element {
 
-  const currentCity = useAppSelector((state) => state.currentCity);
+  // const currentCity = useAppSelector((state) => state.currentCity);
   const offers = useAppSelector((state) => state.offers);
 
   return (
@@ -29,7 +29,8 @@ export default function Main(): JSX.Element {
         </section>
       </div>
       <div className="cities">
-        {(offers.length === 0) ? <NoOffersList city={currentCity}/> : <OffersList offers = {offers} city={currentCity}/>}
+        {/* {(offers.length === 0) ? <NoOffersList city={currentCity}/> : <OffersList offers = {offers} city={currentCity}/>} */}
+        {(offers.length === 0) ? <NoOffersList /> : <OffersList />}
       </div>
     </main>
   );

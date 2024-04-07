@@ -11,10 +11,10 @@ import Page404 from '../../pages/page404/page404';
 import { TPreviewOffers, TDetailOffers } from '../../types/offer';
 // import { reviews } from '../../mocks/reviews';
 import { TReviews } from '../../types/review';
-// import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks';
+import Loader from '../loader/loader';
 
 type TAppProps = {
-//   // offersCount: number;
   offers: TPreviewOffers;
   detailOffers: TDetailOffers;
   reviews: TReviews;
@@ -22,8 +22,18 @@ type TAppProps = {
 };
 
 // export default function App({offers, authorizationStatus}: AppProps): JSX.Element {
-export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Element {
 // export default function App({offers}: TAppProps): JSX.Element {
+export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Element {
+
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
+
+  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
+    return (
+      <Loader />
+    );
+  }
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -41,7 +51,6 @@ export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Ele
               path={AppRoute.Favorites}
               element={
                 <PrivateRoute authorizationStatus = {AuthorizationStatus.Auth}>
-                  {/* <Favorites offers = {offers} /> */}
                   <Favorites />
                 </PrivateRoute>
               }
