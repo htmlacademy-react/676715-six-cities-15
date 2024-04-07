@@ -41,7 +41,7 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
     });
-    // .addCase(setError, (state, action) => {
-    //   state.error = action.payload;
-    // });
+  // .addCase(setError, (state, action) => {
+  //   state.error = action.payload;
+  // });
 });
