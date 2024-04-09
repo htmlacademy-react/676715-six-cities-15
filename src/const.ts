@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 
-export const TIMEOUT_SHOW_ERROR = 2000;
+// export const TIMEOUT_SHOW_ERROR = 2000;
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 

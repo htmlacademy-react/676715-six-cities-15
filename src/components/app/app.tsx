@@ -1,5 +1,6 @@
 import { HelmetProvider } from 'react-helmet-async';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+// import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import PrivateRoute from '../private-route/private-route';
 import Layout from '../layout/layout';
@@ -13,6 +14,8 @@ import { TPreviewOffers, TDetailOffers } from '../../types/offer';
 import { TReviews } from '../../types/review';
 import { useAppSelector } from '../../hooks';
 import Loader from '../loader/loader';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 type TAppProps = {
   offers: TPreviewOffers;
@@ -36,7 +39,7 @@ export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Ele
 
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HistoryRouter history={browserHistory}>
         <Routes>
           <Route
             path={AppRoute.Root}
@@ -70,7 +73,7 @@ export default function App({offers, detailOffers, reviews}: TAppProps): JSX.Ele
             />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HistoryRouter>
     </HelmetProvider>
   );
 }

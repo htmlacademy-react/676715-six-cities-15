@@ -6,8 +6,10 @@ import { previewOffers, detailOffers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import ErrorMessage from './components/error-message/error-message';
+// import ErrorMessage from './components/error-message/error-message';
 import { checkAuthAction, fetchOfferAction } from './store/api-actions';
+import { ToastContainer } from 'react-toastify';
+// import <ToastContainer></ToastContainer>
 
 store.dispatch(fetchOfferAction());
 store.dispatch(checkAuthAction());
@@ -21,7 +23,8 @@ root.render(
   <React.StrictMode>
     {/* <App offers = {previewOffers} detailOffers = {detailOffers} reviews = {reviews} authorizationStatus={authorizationStatus}/> */}
     <Provider store = {store}>
-      <ErrorMessage />
+      {/* <ToastContainer /> */}
+      <ToastContainer />
       <App offers = {previewOffers} detailOffers = {detailOffers} reviews = {reviews} />
       {/* <App offers = {previewOffers}/> */}
       {/* <App /> */}
