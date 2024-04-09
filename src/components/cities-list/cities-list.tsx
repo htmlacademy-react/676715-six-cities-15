@@ -1,20 +1,20 @@
 import classNames from 'classnames';
 import { CITIES } from '../../const';
-import { previewOffers } from '../../mocks/offers';
+// import { previewOffers } from '../../mocks/offers';
 import { changeCurrentCity, loadOffers } from '../../store/actions';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 
 export default function CitiesList(): JSX.Element {
 
   const currentCity = useAppSelector((state) => state.currentCity);
-  // const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector((state) => state.offers);
 
   const dispatch = useAppDispatch();
 
   const cityTabClickHandler = ({currentTarget}: React.MouseEvent<HTMLElement>) => {
     dispatch(changeCurrentCity({city: currentTarget.innerText}));
-    dispatch(loadOffers({offers: previewOffers.filter((offer) => offer.city.name === currentTarget.innerText)}));
-    // dispatch(loadOffers({offers: offers.filter((offer) => offer.city.name === currentTarget.innerText)}));
+    // dispatch(updateOffers());
+    dispatch(loadOffers({offers: offers.filter((offer) => offer.city.name === currentTarget.innerText)}));
   };
 
   return (

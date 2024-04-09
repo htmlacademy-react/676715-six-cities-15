@@ -46,9 +46,11 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   async (_arg, {dispatch, extra: api}) => {
     try {
       await api.get(APIRoute.Login);
-      dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      // dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      dispatch(requireAuthorization({authorizationStatus: AuthorizationStatus.Auth}));
     } catch {
-      dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+      // dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+      dispatch(requireAuthorization({authorizationStatus: AuthorizationStatus.NoAuth}));
     }
   },
 );
@@ -67,12 +69,14 @@ export const loginAction = createAsyncThunk<void, AuthData, {
     try {
       const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
       saveToken(token);
-      dispatch(requireAuthorization(AuthorizationStatus.Auth));
-      // console.log('авторизация прошла');
+      // dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      dispatch(requireAuthorization({authorizationStatus: AuthorizationStatus.Auth}));
+      console.log('авторизация прошла');
       dispatch(redirectToRoute(AppRoute.Root));
     } catch {
-      dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
-      // console.log('авторизация не прошла');
+      // dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+      dispatch(requireAuthorization({authorizationStatus: AuthorizationStatus.NoAuth}));
+      console.log('авторизация не прошла');
     }
   },
 );
@@ -86,6 +90,7 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   async (_arg, {dispatch, extra: api}) => {
     await api.delete(APIRoute.Logout);
     dropToken();
-    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    // dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    dispatch(requireAuthorization({authorizationStatus: AuthorizationStatus.NoAuth}));
   },
 );
